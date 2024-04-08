@@ -1,7 +1,8 @@
 package com.shop.model;
 
 import java.sql.*;
-
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -121,4 +122,116 @@ public class ProductDAO {
 		
 	}  // closeConn() 메서드 end
 	
+	
+	// shop_products 테이블에 상품을 등록(추가)하는 메서드.
+	public int insertProduct(ProductDTO dto) {
+		
+		int result = 0, count = 0;
+		
+		
+		try {
+			openConn();
+			
+			sql = "select max(pnum) "
+					+ " from shop_products";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				count = rs.getInt(1) + 1;
+			}
+			
+			sql = "insert into shop_products "
+					+ " values(?, ?, ?, ?, ?, ?, "
+					+ " ?, ?, ?, ?, sysdate)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, count);
+			pstmt.setString(2, dto.getPname());
+			pstmt.setString(3, dto.getPcategory_fk());
+			pstmt.setString(4, dto.getPcompany());
+			pstmt.setString(5, dto.getPimage());
+			pstmt.setInt(6, dto.getPqty());
+			pstmt.setInt(7, dto.getPrice());
+			pstmt.setString(8, dto.getPspec());
+			pstmt.setString(9, dto.getPcontents());
+			pstmt.setInt(10, dto.getPoint());
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return result;
+	}  // insertProduct() 메서드 end
+	
+	
+	
+	// 전체 상품 목록을 조회하는 메서드.
+	public List<ProductDTO> getProductList() {
+		
+		List<ProductDTO> list = 
+						new ArrayList<ProductDTO>();
+		
+		
+		try {
+			openConn();
+			
+			sql = "select * from shop_products "
+					+ " order by pnum desc";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ProductDTO dto = new ProductDTO();
+				
+				dto.setPnum(rs.getInt("pnum"));
+				dto.setPname(rs.getString("pname"));
+				dto.setPcategory_fk(rs.getString("pcategory_fk"));
+				dto.setPcompany(rs.getString("pcompany"));
+				dto.setPimage(rs.getString("pimage"));
+				dto.setPqty(rs.getInt("pqty"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPspec(rs.getString("pspec"));
+				dto.setPcontents(rs.getString("pcontents"));
+				dto.setPoint(rs.getInt("point"));
+				dto.setPinputdate(rs.getString("pinputdate"));
+				
+				
+				list.add(dto);
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		return list;
+	}  // getProductList() 메서드 end
+	
+	
+	
+	
 }
+
+
+
+
+
+
+
+

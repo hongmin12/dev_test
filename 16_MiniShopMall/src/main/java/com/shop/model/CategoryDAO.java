@@ -204,7 +204,67 @@ public class CategoryDAO {
 	
 	
 	
+	// 카테고리 번호에 해당하는 카테고리를 테이블에서 삭제하는 메서드.
+	public int deleteCategory(int num) {
+		
+		int result = 0;
+		
+		
+		try {
+			openConn();
+			
+			sql = "delete from shop_category "
+					+ " where category_num = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, num);
+			
+			result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(pstmt, con);
+		}
+		
+		return result;
+	}  // deleteCategory() 메서드 end
 	
 	
+	
+	// 카테고리 코드 삭제 시 카테고리 번호 재작업하는 메서드.
+	public void updateSequence(int no) {
+		
+		
+		try {
+			openConn();
+			
+			sql = "update shop_category set "
+					+ " category_num = category_num - 1 "
+					+ " where category_num > ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, no);
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			closeConn(pstmt, con);
+		}
+		
+	}  // updateSequence() 메서드 end
 	
 }
+
+
+
+
+
+
+

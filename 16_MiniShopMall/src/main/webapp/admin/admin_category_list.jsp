@@ -8,6 +8,20 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+	function check(num) {
+		
+		let res = confirm("카테고리를 정말로 삭제하시겠습니까?");
+		
+		if(res) {
+			location.href="admin_category_delete.go?cnum="+num;
+		}
+		
+	}
+
+
+</script>
 </head>
 <body>
 
