@@ -10,6 +10,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+	function del(pnum) {
+		
+		let res = confirm("정말로 제품을 삭제하시겠습니까?");
+		
+		if(res) {
+			location.href="admin_product_delete.go?pnum="+pnum;
+		}
+		
+	}
+
+</script>
 </head>
 <body>
 
