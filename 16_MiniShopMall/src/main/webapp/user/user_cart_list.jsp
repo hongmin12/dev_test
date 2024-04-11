@@ -18,35 +18,6 @@
 	}
 
 </style>
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<script type="text/javascript">
-
-	$(() => {
-		
-		$("#amount").change(function() {
-			
-			$.ajax({
-				ContentType : "application/x-www-form-urlencoded; charset=UTF-8",
-				type : "post"
-				url : "<%=request.getContextPath() %>/user_cart_change.go",
-				data : {
-						amount : $("#amount").val(),
-						
-						},
-				dataType : "text",
-				success : function(res) {
-					document.getElementById("amount").val(res);
-				},
-				error : function() {
-					alert("데이터 통신 오류입니다~~~");
-				}
-			});
-			
-		});
-		
-	});
-
-</script>
 </head>
 <body>
 	
