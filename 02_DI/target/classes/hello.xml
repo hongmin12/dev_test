@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	<bean id="english" class="com.spring.di02.MessageEN" />
+		
+	<bean id="korean" class="com.spring.di02.MessageKR" />
+	
+	<bean id="msg" class="com.spring.di02.MessageImpl">
+		<property name="message">
+			<ref bean="english" />
+		</property>
+	</bean>
+	
+</beans>
