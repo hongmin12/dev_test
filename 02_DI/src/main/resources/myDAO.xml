@@ -4,7 +4,8 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 	
-	<bean id="mysql" class="com.spring.di03.MysqlDAO" />
+	<!-- MySqlDAO mysql = new MySqlDAO(); -->
+	<bean id="mysql" class="com.spring.di03.MySqlDAO" />
 	
 	<bean id="oracle" class="com.spring.di03.OracleDAO" />
 	

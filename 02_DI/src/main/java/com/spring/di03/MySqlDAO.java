@@ -1,6 +1,6 @@
 package com.spring.di03;
 
-public class MysqlDAO implements DAO{
+public class MySqlDAO implements DAO{
 
 	@Override
 	public void add() {
