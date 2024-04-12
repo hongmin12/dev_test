@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	
+	<!-- 인자 생성자로 데이터 초기화 -->
+	<bean id="person1" class="com.spring.di05.Person">
+		<constructor-arg value="홍길동" />
+		<constructor-arg value="941212-1234567" />
+		<constructor-arg value="남자" />
+		<constructor-arg value="28" />
+		<constructor-arg value="010-1111-1234" />
+	</bean>
+	
+	<!-- setter() 메서드로 데이터 초기화 -->
+	<bean id="person2" class="com.spring.di05.Person">
+		<property name="name" value="유관순" />
+		<property name="juminNo" value="971201-2345678" />
+		<property name="gender" value="여자" />
+		<property name="age" value="19" />
+		<property name="phone" value="010-2222-2345" />
+	</bean>
+	
+	<bean id="info" class="com.spring.di05.PersonInfo">
+		<constructor-arg>
+			<ref bean="person1"/>
+		</constructor-arg>
+	</bean>
+	
+</beans>
