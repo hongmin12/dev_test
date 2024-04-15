@@ -13,6 +13,8 @@
 		<config>src/main/resources/message.xml</config>
 		<config>src/main/resources/person.xml</config>
 		<config>src/main/resources/baseball.xml</config>
+		<config>src/main/resources/baseballTeam.xml</config>
+		<config>src/main/resources/map.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>

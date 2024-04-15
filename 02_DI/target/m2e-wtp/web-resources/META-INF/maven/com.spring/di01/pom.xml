@@ -48,6 +48,12 @@
 		    <scope>provided</scope>
 		</dependency>
 		
+		<!-- cglib(자바코드 애노테이션) 라이브러리 -->
+		<dependency>
+		    <groupId>cglib</groupId>
+		    <artifactId>cglib</artifactId>
+		    <version>3.3.0</version>
+		</dependency>
 		
 		<!-- Logging -->
 		<dependency>
