@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>product_list</title>
 </head>
 <body>
 
@@ -18,7 +18,7 @@
 	   <hr width="30%" color="red">
 	   <br> <br>
 	   
-	   <table border="1" width="500">
+	   <table border="1" width="600">
 	      <tr>
 	         <th>제품 No.</th> <th>제품명</th>
 	      	 <th>판매 가격</th> <th>제조사</th>
