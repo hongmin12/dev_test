@@ -36,13 +36,35 @@
 				<c:forEach items="${list }" var="dto">
 					<tr>
 						<td> ${dto.memno } </td>
-						<td> ${dto.memname } </td>
+						<td>
+							<a href="<%=request.getContextPath() %>/member_content.go?num=${dto.memno }">
+								${dto.memname }
+							</a>
+						</td>
 						<td> ${dto.job } </td>
 						<td> ${dto.regdate.substring(0, 10) } </td>
 					</tr>
 				</c:forEach>
 			</c:if>
 		</table>
+		<br> <br>
+		
+		<input type="button" value="회원등록" onclick="location.href='member_insert.go'">
+		<br> <br>
+		
+		<%-- 검색 폼 영역 --%>
+		<form method="post" action="<%=request.getContextPath() %>/member_search.go">
+			<select name="field">
+				<option value="id">아이디</option>
+				<option value="name">이름</option>
+				<option value="job">직업</option>
+				<option value="addr">주소</option>
+			</select>
+			
+			<input name="keyword">&nbsp;&nbsp;&nbsp;
+			<input type="submit" value="검색">
+			 
+		</form>
 	</div>
 	
 </body>

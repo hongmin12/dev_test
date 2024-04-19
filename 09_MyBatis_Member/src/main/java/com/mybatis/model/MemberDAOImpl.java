@@ -21,31 +21,31 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public int insertMember(Member dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return this.sqlSession.insert("add", dto);
+		
 	}
 
 	@Override
 	public Member getMember(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return this.sqlSession.selectOne("cont", num);
+		
 	}
 
 	@Override
 	public int updateMember(Member dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.sqlSession.update("upd", dto);
 	}
 
 	@Override
 	public int deleteMember(int num) {
-		// TODO Auto-generated method stub
-		return 0;
+		return this.sqlSession.delete("del", num);
 	}
 
 	@Override
 	public void updateSequence(int num) {
-		// TODO Auto-generated method stub
+		this.sqlSession.update("seq", num);
 
 	}
 

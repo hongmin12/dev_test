@@ -20,5 +20,27 @@
 <mapper namespace="com.mybatis.model.MemberDAO">
 	<select id="all" resultType="com.mybatis.model.Member">
 		select * from member order by memno desc
-	</select>  
+	</select>
+	
+	<insert id="add" parameterType="com.mybatis.model.Member">
+		insert into member values((select max(memno) from member) + 1, #{memid}, #{memname}, #{mempwd}, 
+			#{age}, #{mileage}, #{job}, #{addr}, sysdate)
+	</insert>
+	
+	<select id="cont" parameterType="int" resultType="com.mybatis.model.Member">
+		select * from member where memno = #{num}
+	</select>
+	
+	<update id="upd" parameterType="com.mybatis.model.Member">
+		update member set age = #{age}, mileage = #{mileage}, job = #{job}, 
+			addr = #{addr} where memno = #{memno}
+	</update>
+	
+	<delete id="del" parameterType="int">
+		delete from member where memno = #{memno}
+	</delete>
+	
+	<update id="seq" parameterType="int">
+		update member set memno = memno - 1 where memno > #{memno}
+	</update>
 </mapper>
