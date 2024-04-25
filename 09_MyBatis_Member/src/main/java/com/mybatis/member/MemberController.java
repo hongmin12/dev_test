@@ -2,7 +2,9 @@ package com.mybatis.member;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -130,6 +132,25 @@ public class MemberController {
 			out.println("history.back()");
 			out.println("</script>");
 		}
+		
+	}
+	
+	
+	@RequestMapping("member_search.go")
+	public String search(@RequestParam("field") String field, @RequestParam("keyword") String keyword,
+			Model model) {
+		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map.put("Field", field);
+		map.put("Keyword", keyword);
+		
+		List<Member> searchList = this.dao.searchMemberList(map);
+		
+		model.addAttribute("Search", searchList);
+		model.addAttribute("key", keyword);
+		
+		return "member_search_list";
 		
 	}
 	

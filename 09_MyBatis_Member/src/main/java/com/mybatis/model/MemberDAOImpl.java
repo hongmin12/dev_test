@@ -1,6 +1,7 @@
 package com.mybatis.model;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,9 +51,8 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public List<Member> searchMemberList(String field, String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Member> searchMemberList(Map<String, String> map) {
+		return this.sqlSession.selectList("search", map);
 	}
 
 }

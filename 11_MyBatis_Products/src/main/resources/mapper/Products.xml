@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	DTD(Document Type Definition)
+	- 작성한 문서가 어떤 문서인지에 대해서 정의해 놓은 것을 말함.
+	- 하나의 시스템 내에서 사용할 xml 데이터의 구조를 정의하여
+	  유효성을 점검 시 사용하는 태그.
+ -->
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 
+	- namespace 명은 패키지명을 포함해서 DAO 인터페이스 이름을
+  		  사용하는 것이 관례임.
+  	- namespace 명은 mapper들을 구분하는데 식별자로 사용이 됨.
+ -->
+  
+<mapper namespace="productDao">
+	<select id="list" resultType="product">
+		select * from products order by pnum desc
+	</select>
+	
+	<select id="clist" resultType="category">
+		select * from category order by cnum
+	</select>
+	
+	<insert id="add" parameterType="product">
+		<selectKey resultType="int" keyProperty="pnum" order="BEFORE">
+			select max(pnum) from products
+		</selectKey>
+		
+		insert into products values(#{pnum} + 1, #{category_fk}, #{products_name}, #{ep_code_fk}, 
+			#{input_price}, #{output_price}, #{trans_cost}, #{mileage}, #{company})
+		
+	</insert>
+	
+	<select id="cont" parameterType="int" resultType="product">
+		select * from products where pnum = #{no}
+	</select>
+	
+	<update id="mod" parameterType="product">
+		update products set input_price = #{input_price}, output_price = #{output_price}, 
+			trans_cost = #{trans_cost}, mileage = #{mileage}, company = #{company} where pnum = #{pnum}
+	</update>
+	
+	<delete id="del" parameterType="int">
+		delete from products where pnum = #{no}
+	</delete>
+	
+	<update id="seq" parameterType="int">
+		update products set pnum = pnum - 1 where pnum > #{no}
+	</update>
+</mapper>

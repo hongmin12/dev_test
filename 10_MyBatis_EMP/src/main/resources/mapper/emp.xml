@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+	DTD(Document Type Definition)
+	- 작성한 문서가 어떤 문서인지에 대해서 정의해 놓은 것을 말함.
+	- 하나의 시스템 내에서 사용할 xml 데이터의 구조를 정의하여
+	  유효성을 점검 시 사용하는 태그.
+ -->
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 
+	- namespace 명은 패키지명을 포함해서 DAO 인터페이스 이름을
+  		  사용하는 것이 관례임.
+  	- namespace 명은 mapper들을 구분하는데 식별자로 사용이 됨.
+ -->
+  
+<mapper namespace="empDao">
+	<select id="list" resultType="emp">
+		select * from emp order by hiredate desc
+	</select>
+	
+	<select id="dList" resultType="dept">
+		select * from dept order by deptno
+	</select>
+	
+	<select id="jList" resultType="String">
+		select distinct job from emp
+	</select>
+	
+	<select id="mList" resultType="emp">
+		select * from emp where empno in (select distinct mgr from emp)
+	</select>
+	
+	<insert id="add" parameterType="emp">
+		insert into emp values(#{empno}, #{ename}, #{job}, #{mgr}, sysdate, #{sal}, #{comm}, #{deptno})
+	</insert>
+	
+	<select id="one" parameterType="int" resultType="emp">
+		select * from emp where empno = #{no}
+	</select>
+	
+	<update id="modi" parameterType="emp">
+		update emp set job = #{job}, mgr = #{mgr}, sal = #{sal}, comm = #{comm} where empno = #{empno}
+	</update>
+	
+	<delete id="del" parameterType="int">
+		delete from emp where empno = #{no}
+	</delete>
+</mapper>

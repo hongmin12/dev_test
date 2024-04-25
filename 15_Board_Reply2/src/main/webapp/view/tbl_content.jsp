@@ -98,7 +98,7 @@
 	   
 	   <%-- 여기는 댓글 폼 영역입니다. --%>
 	   <div>
-	      <table width="400">
+	      <table border="1" width="400">
 	         <tr>
 	            <th>댓글 작성자</th>
 	            <td>
@@ -126,7 +126,7 @@
 	   <h3>댓글 목록</h3>
 	   
 	   <div>
-	      <table class="replyList" width="400">
+	      <table border="1" class="replyList" width="400">
 	         <tr>
 	            <td colspan="2">작성자</td>
 	         </tr>

@@ -1,6 +1,7 @@
 package com.mybatis.model;
 
 import java.util.List;
+import java.util.Map;
 
 public interface MemberDAO {
 	
@@ -23,6 +24,6 @@ public interface MemberDAO {
 	void updateSequence(int num);
 	
 	// 검색하는 추상 메서드.
-	List<Member> searchMemberList(String field, String keyword);
+	List<Member> searchMemberList(Map<String, String> map);
 	
 }

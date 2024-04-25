@@ -19,7 +19,7 @@
 		<br> <br>
 		
 		<form method="post" action="<%=request.getContextPath() %>/member_update_ok.go"
-			onsubmit="check()">
+			onsubmit="return check()">
 			
 			<input type="hidden" name="memno" value="${dto.memno }">
 			<table border="1" width="400">
