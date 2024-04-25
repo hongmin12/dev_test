@@ -24,8 +24,12 @@ public class UploadController {
 	public String uploadOk(Model model, MultipartHttpServletRequest mRequest) {
 		
 		if(this.upload.fileUpload(mRequest)) {
-			
+			model.addAttribute("result", "파일 업로드 성공!!!");
+		}else {
+			model.addAttribute("result", "파일 업로드 실패~~~");
 		}
+		
+		return "upload_result";
 		
 	}
 
