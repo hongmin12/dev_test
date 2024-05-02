@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Index_09</title>
+<script type="text/javascript" th:inline="javascript">
+
+	function action() {
+		
+		let val = document.getElementById("txt1").value;
+		
+		let result = parseInt(val * ((100 + /*[[${tax}]]*/) / 100));
+		
+		document.getElementById("message").innerHTML = "include tax >>> " + result;
+		
+	}
+
+</script>
+</head>
+<body>
+	
+	<!-- 
+		자바스크립트에서 타임리프(인라인 방식) 처리하는 방법
+		- 인라인 처리는 텍스트 뿐만 아니라 자바스크립트에서도 적용할 수 있음.
+		- 스크립트의 경우에는 <script> 태그 안에 아래와 같은 형식으로 설정하면 됨.
+		  형식) <script th:inline="javascript">
+		  
+		- 이렇게 작성을 하면 <script> 태그 내에 인라인 처리가 가능함.
+		- 변수식도 단순한 형태가 아니라 이래와 같은 형식으로 작성해야 함.
+		  
+		  형식)
+		  		/*[[${변수식}]]*/
+		  		
+		- 주의사항 : /* 와 */ 사이에 공백이 있으면 안 됨.
+	 -->
+	
+	<div align="center">
+		
+		<h1>Thymeleaf 페이지</h1>
+		
+		<p id="message"></p>
+		
+		<input id="txt1">&nbsp;&nbsp;&nbsp;
+		<input type="button" value="클릭" onclick="action()">
+		
+	</div>
+	
+</body>
+</html>

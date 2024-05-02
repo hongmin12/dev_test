@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Index_10</title>
+</head>
+<body>
+	
+	<div align="center">
+		
+		<h1>Thymeleaf 페이지</h1>
+		
+		<p> <a th:href="@{'/'}">link</a> </p>
+
+		<p> <a th:href="@{'/hello(param1=${10}, param2=${20})'}">link</a> </p>
+		
+	</div>
+	
+</body>
+</html>

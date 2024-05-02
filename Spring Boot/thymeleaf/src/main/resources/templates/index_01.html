@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Index_01</title>
+</head>
+<body>
+	
+	<div align="center">
+	
+	<h1>Thymeleaf 페이지</h1>
+	
+	<p th:text="${message}">Please wait.....</p>
+	
+	<form method="post" action="data">
+		<input name="txt1" th:value="${message}">
+		<input type="submit" value="전송">
+	</form>
+	</div>
+	
+</body>
+</html>

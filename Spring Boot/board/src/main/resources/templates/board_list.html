@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Board_list</title>
+</head>
+<body>
+	
+	<div align="center">
+		<hr width="30%" color="red">
+			<h3>BOARD 테이블 게시물 전체 리스트 페이지</h3>
+		<hr width="30%" color="red">
+		<br> <br>
+		
+		<table border="1" cellspacing="0" width="600">
+			<tr>
+				<td colspan="4" align="right">
+					총 게시물 : <span th:text="${#lists.size(List)}"></span> 개
+				</td>
+			</tr>
+			
+			<tr>
+				<th>글 No.</th> <th>글제목</th>
+				<th>조회수</th> <th>작성일자</th>
+			</tr>
+			
+			<tr th:if="${not #strings.isEmpty(List)}" th:each="dto : ${List}">
+				<td th:text="${dto.board_no}"></td>
+				<td>
+					<a th:href="@{board_content(no=${dto.board_no})}" th:text="${dto.board_title}"></a>
+				</td>
+				<td th:text="${dto.board_hit}"></td>
+				<td th:text="${dto.board_date.substring(0, 10)}"></td>
+			</tr>
+			
+			<tr th:if="${#strings.isEmpty(List)}">
+				<td colspan="4" align="center">
+					<h3>전체 게시물 목록이 없습니다.....</h3>
+				</td>
+			</tr>
+		</table>
+		<br> <br>
+		
+		<input type="button" value="글쓰기" th:onclick="|location.href='board_write'|">
+		<br> <br>
+	</div>
+	
+</body>
+</html>

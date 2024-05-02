@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Index_05</title>
+</head>
+<body>
+	
+	<div align="center">
+		<div th:switch="${hakjum}">
+			<p th:case="10" th:text="${score} + ' 점수의 학점은 A학점입니다.'"></p>
+			<p th:case="9" th:text="${score} + ' 점수의 학점은 A학점입니다.'"></p>
+			<p th:case="8" th:text="${score} + ' 점수의 학점은 B학점입니다.'"></p>
+			<p th:case="7" th:text="${score} + ' 점수의 학점은 C학점입니다.'"></p>
+			<p th:case="6" th:text="${score} + ' 점수의 학점은 D학점입니다.'"></p>
+			<p th:case="*" th:text="${score} + ' 점수의 학점은 F학점입니다.'"></p>
+		</div>
+	</div>
+	
+</body>
+</html>

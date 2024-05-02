@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Index_06</title>
+</head>
+<body>
+	
+	<div align="center">
+		<table>
+			<tr>
+				<th>값</th>
+			</tr>
+			
+			<tr th:each="m : ${#numbers.sequence(1, 10)}">
+				<td th:text="${m}"></td>
+			</tr>
+		</table>
+	</div>
+	
+</body>
+</html>
